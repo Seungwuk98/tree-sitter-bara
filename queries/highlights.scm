@@ -85,6 +85,8 @@
                   "float"
                   "bool"
                   "type"
+                  "input"
+                  "split"
         )
     ) @function.builtin
   )
