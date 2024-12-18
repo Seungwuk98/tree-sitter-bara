@@ -1,0 +1,43 @@
+==================
+Function
+==================
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+
+//===----------------------------------------------------------------------===//
+/// Function 
+//===----------------------------------------------------------------------===//
+
+fn function(a, b, c) {
+  // CHECK-LABEL: fn function(a, b, c)
+  return (a, b, c);
+  // CHECK-NEXT:   return (a, b, c)
+}
+
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier)
+        (identifier))
+      (comment)
+      (returnStatement
+        (tupleExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (comment))))

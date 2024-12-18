@@ -1,0 +1,299 @@
+==================
+Match
+==================
+
+
+// RUN: bara %s -interpret | FileCheck %s
+
+var a = match 1 {
+  \1 => "one";
+  \2 => "two";
+  \3 => "three";
+};
+
+print(a);
+// CHECK: one 
+
+
+var b = match "x" {
+  \"x" => 1;
+  \"y" => 2;
+  \_ => 3;
+};
+
+print(b);
+// CHECK: 1
+
+var c = match (1, 2) {
+  \(0, 3) => 1;
+  \(1, 4) => 1;
+  \(x, y) => x + y;
+};
+
+print(c);
+// CHECK: 3
+
+var d = match ((1, 2), 3) {
+  \((a, b), c) => a + b + c;
+  \_ => 1;
+};
+
+print(d); 
+// CHECK: 6
+
+var e = match (1,) {
+  \1 => "one";
+  \(a, b) => "two";
+  \_ => "three";
+};
+
+print(e);
+// CHECK: three
+
+var f = match false {
+  \true => "true";
+  \false => "false";
+};
+
+print(f);
+// CHECK: false
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (integerLiteral
+          (integer))
+        (matchCase
+          (pattern
+            (integerPattern
+              (integer)))
+          (stringLiteral
+            (string)))
+        (matchCase
+          (pattern
+            (integerPattern
+              (integer)))
+          (stringLiteral
+            (string)))
+        (matchCase
+          (pattern
+            (integerPattern
+              (integer)))
+          (stringLiteral
+            (string)))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (stringLiteral
+          (string))
+        (matchCase
+          (pattern
+            (stringPattern
+              (string)))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (stringPattern
+              (string)))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (integerLiteral
+            (integer)))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (tupleExpression
+          (integerLiteral
+            (integer))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (tuplePattern
+              (pattern
+                (integerPattern
+                  (integer)))
+              (pattern
+                (integerPattern
+                  (integer)))))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (tuplePattern
+              (pattern
+                (integerPattern
+                  (integer)))
+              (pattern
+                (integerPattern
+                  (integer)))))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (tuplePattern
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (pattern
+                (identifierPattern
+                  (identifier)))))
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (tupleExpression
+          (tupleExpression
+            (integerLiteral
+              (integer))
+            (integerLiteral
+              (integer)))
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (tuplePattern
+              (pattern
+                (tuplePattern
+                  (pattern
+                    (identifierPattern
+                      (identifier)))
+                  (pattern
+                    (identifierPattern
+                      (identifier)))))
+              (pattern
+                (identifierPattern
+                  (identifier)))))
+          (binaryExpression
+            (binaryExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier)))
+            (identifierExpression
+              (identifier))))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (integerLiteral
+            (integer)))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (tupleExpression
+          (integerLiteral
+            (integer)))
+        (matchCase
+          (pattern
+            (integerPattern
+              (integer)))
+          (stringLiteral
+            (string)))
+        (matchCase
+          (pattern
+            (tuplePattern
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (pattern
+                (identifierPattern
+                  (identifier)))))
+          (stringLiteral
+            (string)))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (stringLiteral
+            (string)))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (matchExpression
+        (booleanLiteral)
+        (matchCase
+          (pattern
+            (booleanPattern))
+          (stringLiteral
+            (string)))
+        (matchCase
+          (pattern
+            (booleanPattern))
+          (stringLiteral
+            (string)))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier)))))
+  (comment
+    (litSupport)))
+

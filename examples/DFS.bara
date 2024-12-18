@@ -1,0 +1,31 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+
+var graph = [
+  [1, 2, 4], 
+  [0, 2],
+  [0, 1, 3],
+  [2, 5],
+  [0, 5],
+  [3, 4]
+];
+
+var visit = [false] * 6;
+var dfsOrder = [];
+
+fn dfs(node) {
+  if visit[node] {
+    return;
+  }
+
+  visit[node] = true;
+  push(dfsOrder, node);
+  for (var idx = 0; idx < len(graph[node]); idx += 1) {
+    dfs(graph[node][idx]);
+  }
+}
+
+dfs(0);
+
+print(dfsOrder);
+// CHECK: [0, 1, 2, 3, 5, 4]

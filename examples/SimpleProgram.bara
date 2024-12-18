@@ -1,0 +1,9 @@
+// RUN: bara %s -ast-print | FileCheck %s
+
+fn main() {
+  print(10);
+}
+
+// CHECK: fn main() 
+// CHECK-NEXT: print(10);
+

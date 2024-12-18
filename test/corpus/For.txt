@@ -1,0 +1,173 @@
+==================
+For
+==================
+
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+//===----------------------------------------------------------------------===//
+/// Sum 
+//===----------------------------------------------------------------------===//
+
+var sum = 0;
+
+for (var i = 0; i < 20; i += 1) {
+  sum += i;
+}
+
+print(sum);
+
+// CHECK: var sum = 0;
+
+// CHECK-LABEL: for (var i = 0; i < 20; i += 1)
+// CHECK-NEXT:   sum += i;
+
+// CHECK: print(sum);
+
+//===----------------------------------------------------------------------===//
+/// Empty For
+//===----------------------------------------------------------------------===//
+
+
+for (;;) {}
+
+// CHECK-LABEL: for (; ; ) 
+
+//===----------------------------------------------------------------------===//
+/// No Cond
+//===----------------------------------------------------------------------===//
+
+for (var i = 0;; i += 1) {
+  if i < 20 {
+    break;
+  } else {
+    continue;
+  }
+}
+
+// CHECK-LABEL: for (var i = 0; ; i += 1) 
+// CHECK-NEXT:  if i < 20
+// CHECK-NEXT:    break;
+// CHECK-NEXT:  else 
+// CHECK-NEXT:    continue;
+
+
+//===----------------------------------------------------------------------===//
+/// Compound Step
+//===----------------------------------------------------------------------===//
+
+for (var i = 0;; {
+  i += 1;
+  i += 2;
+}) {}
+
+/// CHECK-LABEL: for (var i = 0; ; {
+/// CHECK-NEXT:  i += 1;
+/// CHECK-NEXT:  i += 2;
+/// CHECK-NEXT: }) {
+/// CHECK-NEXT: }
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer)))
+    (forStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer))
+      (binaryExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
+      (identifierExpression
+        (identifier))
+      (integerLiteral
+        (integer))
+      (operatorAssignmentStatement
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (forStatement)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (forStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer))
+      (identifierExpression
+        (identifier))
+      (integerLiteral
+        (integer))
+      (ifStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (breakStatement)
+        (continueStatement)))
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (forStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer))
+      (compoundStatement
+        (operatorAssignmentStatement
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (operatorAssignmentStatement
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer))))))
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment))
+

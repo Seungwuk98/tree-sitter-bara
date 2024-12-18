@@ -1,0 +1,129 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+fn newNode(val) {
+  var data = [
+    val,
+    nil,
+  ];
+  return [
+    \ => data[0],
+    \ => data[1],
+    \target => { data[0] = target; },
+    \next => { data[1] = next; },
+  ];
+}
+
+fn getVal(node) {
+  return node[0]();
+}
+
+fn getNext(node) {
+  return node[1]();
+}
+
+fn setVal(node, val) {
+  node[2](val);
+}
+
+fn setNext(node, next) {
+  node[3](next);
+}
+
+fn newLinkedList() {
+  var data = [
+    0,
+    newNode(nil),
+  ];
+  return [
+    \cnt => { data[0] += cnt ;},
+    \ => data[0],
+    \ => data[1],
+  ];
+}
+
+fn addSize(ll, cnt) {
+  ll[0](cnt);
+}
+
+fn getSize(ll) {
+  return ll[1](); 
+}
+
+fn getHead(ll) {
+  return ll[2]();
+}
+
+fn getData(ll, idx) {
+  var curr = getHead(ll);
+  for (var cnt = 0; cnt <= idx; cnt += 1) {
+    curr = getNext(curr); 
+    if curr == nil {
+      return nil;
+    }
+  }
+  return getVal(curr);
+}
+
+fn setData(ll, idx, val) {
+  var curr = getHead(ll);
+  for (var cnt = 0; cnt <= idx; cnt += 1) {
+    curr = getNext(curr);
+    if (curr == nil) {
+      return false;
+    }
+  }
+  setVal(curr, val);
+  return true;
+}
+
+fn pushData(ll, val) {
+  var (prev, curr) = (nil, getHead(ll));
+  while curr != nil {
+    prev = curr;
+    curr = getNext(curr);
+  }
+  var new = newNode(val);
+  setNext(prev, new); 
+  addSize(ll, 1);
+}
+
+var firstNode = newNode(0); 
+print(getVal(firstNode)); 
+// CHECK: 0 
+
+setVal(firstNode, 1); 
+print(getVal(firstNode)); 
+// CHECK: 1 
+
+var secondNode = newNode(2); 
+print(getVal(secondNode)); 
+// CHECK: 2 
+
+setNext(firstNode, secondNode); 
+var firstNext = getNext(firstNode); 
+print(getVal(firstNext)); 
+// CHECK: 2 
+
+setVal(secondNode, 3); 
+print(getVal(firstNext)); 
+// CHECK: 3 
+
+var ll = newLinkedList(); 
+print(getSize(ll)); 
+// CHECK: 0 
+
+pushData(ll, 0); 
+print(getSize(ll)); 
+// CHECK: 1 
+
+print(getData(ll, 0)); 
+// CHECK: 0 
+
+setData(ll, 0, 1); 
+print(getData(ll, 0)); 
+// CHECK: 1 
+
+pushData(ll, 2); 
+print(getData(ll, 1)); 
+// CHECK: 2
+

@@ -1,0 +1,50 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+var fibonacci = [];
+
+fn fibo(n) {
+  if n < len(fibonacci) {
+    return fibonacci[n];
+  }
+  var value;
+  if n < 2 {
+    value = n;
+  } else {
+    value = fibo(n - 1) + fibo(n - 2);
+  }
+  push(fibonacci, value);
+  return value;
+}
+
+print(fibo(0));
+// CHECK: 0
+
+print(fibo(1));
+// CHECK: 1
+
+print(fibo(2));
+// CHECK: 1
+
+print(fibo(3));
+// CHECK: 2
+
+print(fibo(4));
+// CHECK: 3
+
+print(fibo(5));
+// CHECK: 5
+
+print(fibo(6));
+// CHECK: 8
+
+print(fibo(7));
+// CHECK: 13
+
+print(fibo(8));
+// CHECK: 21
+
+print(fibo(29));
+// CHECK: 514229
+
+print(fibonacci);
+// CHECK: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229]

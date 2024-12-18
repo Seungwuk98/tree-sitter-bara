@@ -1,0 +1,39 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+
+var getUniqueNumber = \ => {
+  var a = 0;
+  return \ => {
+    a += 1;
+    return a;
+  };
+}();
+
+print(getUniqueNumber());
+// CHECK: 1
+
+print(getUniqueNumber());
+// CHECK: 2
+
+print(getUniqueNumber());
+// CHECK: 3
+
+
+var outOfLambda = 0;
+
+var inLambda = \ => {
+  outOfLambda += 1;
+  return outOfLambda;
+};
+
+print(inLambda());
+// CHECK: 1
+
+print(outOfLambda);
+// CHECK: 0
+
+print(inLambda());
+// CHECK: 2
+
+print(outOfLambda);
+// CHECK: 0

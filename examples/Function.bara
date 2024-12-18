@@ -1,0 +1,14 @@
+// RUN: bara %s -ast-print | FileCheck %s
+
+
+//===----------------------------------------------------------------------===//
+/// Pattern Function 
+//===----------------------------------------------------------------------===//
+
+fn function(a, b, c) {
+  // CHECK-LABEL: fn function(a, b, c)
+  return (a, b, c);
+  // CHECK-NEXT:   return (a, b, c)
+}
+
+

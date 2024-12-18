@@ -1,0 +1,31 @@
+==================
+Simple Program
+==================
+
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+fn main() {
+  print(10);
+}
+
+// CHECK: fn main() 
+// CHECK-NEXT: print(10);
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (program
+    (functionDeclaration
+      (identifier)
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer))))))
+  (comment
+    (litSupport))
+  (comment))

@@ -1,0 +1,37 @@
+// RUN: bara %s -interpret | FileCheck %s
+var list = [[]] * 2;
+
+push(list[0], 0);
+
+print(list);
+// CHECK: {{\[\[}}0], [0]]
+
+var list2 = [];
+
+for (var idx = 0; idx < 2; idx += 1) {
+  push(list2, []);
+}
+
+push(list2[0], 0);
+
+print(list2);
+// CHECK: {{\[\[}}0], []]
+
+
+var list3 = [[], []];
+
+push(list3[0], 0);
+
+print(list3);
+// CHECK: {{\[\[}}0], []]
+
+
+fn pushList(list, value) {
+  push(list, value);
+  return list;
+}
+
+print(pushList(pushList([], 1), 2));
+// CHECK: [1, 2]
+
+

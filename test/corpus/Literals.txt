@@ -1,0 +1,137 @@
+==================
+Literals
+==================
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+
+//===----------------------------------------------------------------------===//
+/// integer literal
+//===----------------------------------------------------------------------===//
+
+var a = 1;
+// CHECK: var a = 1;
+
+
+//===----------------------------------------------------------------------===//
+/// float literal
+//===----------------------------------------------------------------------===//
+
+var b = 1.;
+// CHECK: var b = 1.;
+
+var c = 2.000;
+// CHECK: var c = 2.000;
+
+
+//===----------------------------------------------------------------------===//
+/// boolean literal
+//===----------------------------------------------------------------------===//
+
+var d = true;
+// CHECK: var d = true;
+
+var e = false;
+// CHECK: var e = false;
+
+
+//===----------------------------------------------------------------------===//
+/// string literal
+//===----------------------------------------------------------------------===//
+
+var f = "abcde";
+// CHECK: var f = "abcde";
+
+var g = "abcde\n";
+// CHECK: var g = "abcde\n";
+
+
+//===----------------------------------------------------------------------===//
+/// nil literal
+//===----------------------------------------------------------------------===//
+
+var h = nil;
+// CHECK: var h = nil;
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer)))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (floatLiteral
+        (float)))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (floatLiteral
+        (float)))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (booleanLiteral))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (booleanLiteral))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (stringLiteral
+        (string)))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (stringLiteral
+        (string)))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (nilLiteral)))
+  (comment
+    (litSupport)))

@@ -1,0 +1,68 @@
+==================
+Array
+==================
+
+//===----------------------------------------------------------------------===//
+/// Array with extra comma 
+//===----------------------------------------------------------------------===//
+
+var a = [1, 2, 3,];
+// CHECK: var a = [1, 2, 3];
+
+
+//===----------------------------------------------------------------------===//
+/// Empty Array  
+//===----------------------------------------------------------------------===//
+
+var b = [];
+// CHECK: var b = [];
+
+
+//===----------------------------------------------------------------------===//
+/// Empty Array with extra comma  
+//===----------------------------------------------------------------------===//
+
+var c = [,];
+// CHECK: var c = [];
+
+---
+
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (arrayExpression
+        (integerLiteral
+          (integer))
+        (integerLiteral
+          (integer))
+        (integerLiteral
+          (integer))))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (arrayExpression))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (arrayExpression)))
+  (comment
+    (litSupport)))
+

@@ -1,0 +1,182 @@
+==================
+List
+==================
+
+
+// RUN: bara %s -interpret | FileCheck %s
+var list = [[]] * 2;
+
+push(list[0], 0);
+
+print(list);
+// CHECK: {{\[\[}}0], [0]]
+
+var list2 = [];
+
+for (var idx = 0; idx < 2; idx += 1) {
+  push(list2, []);
+}
+
+push(list2[0], 0);
+
+print(list2);
+// CHECK: {{\[\[}}0], []]
+
+
+var list3 = [[], []];
+
+push(list3[0], 0);
+
+print(list3);
+// CHECK: {{\[\[}}0], []]
+
+
+fn pushList(list, value) {
+  push(list, value);
+  return list;
+}
+
+print(pushList(pushList([], 1), 2));
+// CHECK: [1, 2]
+
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (binaryExpression
+        (arrayExpression
+          (arrayExpression))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (indexExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (arrayExpression))
+    (forStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer))
+      (binaryExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
+      (identifierExpression
+        (identifier))
+      (integerLiteral
+        (integer))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (arrayExpression))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (indexExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (arrayExpression
+        (arrayExpression)
+        (arrayExpression)))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (indexExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (returnStatement
+        (identifierExpression
+          (identifier))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (arrayExpression)
+            (integerLiteral
+              (integer)))
+          (integerLiteral
+            (integer))))))
+  (comment
+    (litSupport)))
+

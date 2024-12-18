@@ -1,0 +1,111 @@
+==================
+Declaration
+==================
+
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+
+//===----------------------------------------------------------------------===//
+/// simple declaration
+//===----------------------------------------------------------------------===//
+
+var a = 1;
+// CHECK: var a = 1;
+
+
+//===----------------------------------------------------------------------===//
+/// tuple declaration 
+//===----------------------------------------------------------------------===//
+
+var (a, b) = (1, 2);
+// CHECK: var (a, b) = (1, 2);
+
+
+//===----------------------------------------------------------------------===//
+/// tuple in tuple declaration
+//===----------------------------------------------------------------------===//
+
+var (a, (b, c)) = (1, (2, 3));
+// CHECK: var (a, (b, c)) = (1, (2, 3));
+
+
+//===----------------------------------------------------------------------===//
+/// empty tuple declaration 
+//===----------------------------------------------------------------------===//
+
+var () = ();
+// CHECK: var () = ();
+
+---
+(source_file
+  (comment
+    (litSupport))
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (integerLiteral
+        (integer)))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (tuplePattern
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (pattern
+            (identifierPattern
+              (identifier)))))
+      (tupleExpression
+        (integerLiteral
+          (integer))
+        (integerLiteral
+          (integer))))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (tuplePattern
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (pattern
+            (tuplePattern
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (pattern
+                (identifierPattern
+                  (identifier)))))))
+      (tupleExpression
+        (integerLiteral
+          (integer))
+        (tupleExpression
+          (integerLiteral
+            (integer))
+          (integerLiteral
+            (integer)))))
+    (comment
+      (litSupport))
+    (comment)
+    (comment)
+    (comment)
+    (declarationStatement
+      (pattern
+        (tuplePattern))
+      (tupleExpression)))
+  (comment
+    (litSupport)))
+

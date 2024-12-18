@@ -1,0 +1,687 @@
+==================
+LinkedList
+==================
+
+
+// RUN: bara %s -interpret | FileCheck %s
+
+fn newNode(val) {
+  var data = [
+    val,
+    nil,
+  ];
+  return [
+    \ => data[0],
+    \ => data[1],
+    \target => { data[0] = target; },
+    \next => { data[1] = next; },
+  ];
+}
+
+fn getVal(node) {
+  return node[0]();
+}
+
+fn getNext(node) {
+  return node[1]();
+}
+
+fn setVal(node, val) {
+  node[2](val);
+}
+
+fn setNext(node, next) {
+  node[3](next);
+}
+
+fn newLinkedList() {
+  var data = [
+    0,
+    newNode(nil),
+  ];
+  return [
+    \cnt => { data[0] += cnt ;},
+    \ => data[0],
+    \ => data[1],
+  ];
+}
+
+fn addSize(ll, cnt) {
+  ll[0](cnt);
+}
+
+fn getSize(ll) {
+  return ll[1](); 
+}
+
+fn getHead(ll) {
+  return ll[2]();
+}
+
+fn getData(ll, idx) {
+  var curr = getHead(ll);
+  for (var cnt = 0; cnt <= idx; cnt += 1) {
+    curr = getNext(curr); 
+    if curr == nil {
+      return nil;
+    }
+  }
+  return getVal(curr);
+}
+
+fn setData(ll, idx, val) {
+  var curr = getHead(ll);
+  for (var cnt = 0; cnt <= idx; cnt += 1) {
+    curr = getNext(curr);
+    if (curr == nil) {
+      return false;
+    }
+  }
+  setVal(curr, val);
+  return true;
+}
+
+fn pushData(ll, val) {
+  var (prev, curr) = (nil, getHead(ll));
+  while curr != nil {
+    prev = curr;
+    curr = getNext(curr);
+  }
+  var new = newNode(val);
+  setNext(prev, new); 
+  addSize(ll, 1);
+}
+
+var firstNode = newNode(0); 
+print(getVal(firstNode)); 
+// CHECK: 0 
+
+setVal(firstNode, 1); 
+print(getVal(firstNode)); 
+// CHECK: 1 
+
+var secondNode = newNode(2); 
+print(getVal(secondNode)); 
+// CHECK: 2 
+
+setNext(firstNode, secondNode); 
+var firstNext = getNext(firstNode); 
+print(getVal(firstNext)); 
+// CHECK: 2 
+
+setVal(secondNode, 3); 
+print(getVal(firstNext)); 
+// CHECK: 3 
+
+var ll = newLinkedList(); 
+print(getSize(ll)); 
+// CHECK: 0 
+
+pushData(ll, 0); 
+print(getSize(ll)); 
+// CHECK: 1 
+
+print(getData(ll, 0)); 
+// CHECK: 0 
+
+setData(ll, 0, 1); 
+print(getData(ll, 0)); 
+// CHECK: 1 
+
+pushData(ll, 2); 
+print(getData(ll, 1)); 
+// CHECK: 2
+
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (program
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier))
+      (declarationStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (arrayExpression
+          (identifierExpression
+            (identifier))
+          (nilLiteral)))
+      (returnStatement
+        (arrayExpression
+          (lambdaExpression
+            (indexExpression
+              (identifierExpression
+                (identifier))
+              (integerLiteral
+                (integer))))
+          (lambdaExpression
+            (indexExpression
+              (identifierExpression
+                (identifier))
+              (integerLiteral
+                (integer))))
+          (lambdaExpression
+            (parameters
+              (identifier))
+            (compoundStatement
+              (assignmentStatement
+                (indexExpression
+                  (identifierExpression
+                    (identifier))
+                  (integerLiteral
+                    (integer)))
+                (identifierExpression
+                  (identifier)))))
+          (lambdaExpression
+            (parameters
+              (identifier))
+            (compoundStatement
+              (assignmentStatement
+                (indexExpression
+                  (identifierExpression
+                    (identifier))
+                  (integerLiteral
+                    (integer)))
+                (identifierExpression
+                  (identifier))))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier))
+      (returnStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier))
+      (returnStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (expressionStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer)))
+          (identifierExpression
+            (identifier)))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (expressionStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer)))
+          (identifierExpression
+            (identifier)))))
+    (functionDeclaration
+      (identifier)
+      (declarationStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (arrayExpression
+          (integerLiteral
+            (integer))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (nilLiteral))))
+      (returnStatement
+        (arrayExpression
+          (lambdaExpression
+            (parameters
+              (identifier))
+            (compoundStatement
+              (operatorAssignmentStatement
+                (indexExpression
+                  (identifierExpression
+                    (identifier))
+                  (integerLiteral
+                    (integer)))
+                (identifierExpression
+                  (identifier)))))
+          (lambdaExpression
+            (indexExpression
+              (identifierExpression
+                (identifier))
+              (integerLiteral
+                (integer))))
+          (lambdaExpression
+            (indexExpression
+              (identifierExpression
+                (identifier))
+              (integerLiteral
+                (integer)))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (expressionStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer)))
+          (identifierExpression
+            (identifier)))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier))
+      (returnStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier))
+      (returnStatement
+        (callExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer))))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (declarationStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (forStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (integerLiteral
+          (integer))
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))
+        (assignmentStatement
+          (identifierExpression
+            (identifier))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))
+        (ifStatement
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (nilLiteral))
+          (returnStatement
+            (nilLiteral))))
+      (returnStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier)
+        (identifier))
+      (declarationStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (forStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (integerLiteral
+          (integer))
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))
+        (assignmentStatement
+          (identifierExpression
+            (identifier))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))
+        (ifStatement
+          (groupExpression
+            (binaryExpression
+              (identifierExpression
+                (identifier))
+              (nilLiteral)))
+          (returnStatement
+            (booleanLiteral))))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (returnStatement
+        (booleanLiteral)))
+    (functionDeclaration
+      (identifier)
+      (parameters
+        (identifier)
+        (identifier))
+      (declarationStatement
+        (pattern
+          (tuplePattern
+            (pattern
+              (identifierPattern
+                (identifier)))
+            (pattern
+              (identifierPattern
+                (identifier)))))
+        (tupleExpression
+          (nilLiteral)
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier)))))
+      (whileStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (nilLiteral))
+        (assignmentStatement
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))
+        (assignmentStatement
+          (identifierExpression
+            (identifier))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier)))))
+      (declarationStatement
+        (pattern
+          (identifierPattern
+            (identifier)))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer))))))
+  (comment
+    (litSupport)))
+

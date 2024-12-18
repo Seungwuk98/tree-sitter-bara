@@ -1,0 +1,29 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+fn fibo(n) {
+  if n < 2 {
+    return n;
+  }
+  return fibo(n - 1) + fibo(n - 2);
+}
+
+print(fibo(0));
+// CHECK: 0
+
+print(fibo(1));
+// CHECK: 1
+
+print(fibo(2));
+// CHECK: 1
+
+print(fibo(3));
+// CHECK: 2
+
+print(fibo(4));
+// CHECK: 3
+
+print(fibo(5));
+// CHECK: 5
+
+print(fibo(6));
+// CHECK: 8

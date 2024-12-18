@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "bara",
+      "camelcase": "Bara",
+      "scope": "source.bara",
+      "file-types": [
+        "bara"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^bara$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Language bara tree-sitter",
+    "authors": [
+      {
+        "name": "SeungWuk Eun",
+        "email": "seungwuk98@snu.ac.kr"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/Seungwuk98/tree-sitter-bara.git"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
