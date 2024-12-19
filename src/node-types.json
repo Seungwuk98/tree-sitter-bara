@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -95,6 +99,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -163,6 +171,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -252,6 +264,10 @@
             "named": true
           },
           {
+            "type": "conditionalExpression",
+            "named": true
+          },
+          {
             "type": "floatLiteral",
             "named": true
           },
@@ -316,6 +332,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -444,6 +464,81 @@
     }
   },
   {
+    "type": "conditionalExpression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrayExpression",
+          "named": true
+        },
+        {
+          "type": "binaryExpression",
+          "named": true
+        },
+        {
+          "type": "booleanLiteral",
+          "named": true
+        },
+        {
+          "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
+          "type": "floatLiteral",
+          "named": true
+        },
+        {
+          "type": "groupExpression",
+          "named": true
+        },
+        {
+          "type": "identifierExpression",
+          "named": true
+        },
+        {
+          "type": "indexExpression",
+          "named": true
+        },
+        {
+          "type": "integerLiteral",
+          "named": true
+        },
+        {
+          "type": "lambdaExpression",
+          "named": true
+        },
+        {
+          "type": "matchExpression",
+          "named": true
+        },
+        {
+          "type": "nilLiteral",
+          "named": true
+        },
+        {
+          "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "tupleExpression",
+          "named": true
+        },
+        {
+          "type": "unaryExpression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "continueStatement",
     "named": true,
     "fields": {}
@@ -470,6 +565,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -557,6 +656,10 @@
         },
         {
           "type": "compoundStatement",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -671,6 +774,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -781,6 +888,10 @@
         },
         {
           "type": "compoundStatement",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -977,6 +1088,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1087,6 +1202,10 @@
         },
         {
           "type": "compoundStatement",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -1201,6 +1320,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1306,6 +1429,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1381,6 +1508,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1453,6 +1584,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -1538,6 +1673,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -1729,6 +1868,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1846,6 +1989,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -1932,6 +2079,10 @@
           "named": true
         },
         {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
           "named": true
         },
@@ -2012,6 +2163,10 @@
         },
         {
           "type": "compoundStatement",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -2174,6 +2329,10 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
@@ -2219,6 +2378,10 @@
   },
   {
     "type": ">>=",
+    "named": false
+  },
+  {
+    "type": "?",
     "named": false
   },
   {

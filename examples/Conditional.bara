@@ -1,0 +1,8 @@
+// RUN: bara %s -ast-print | FileCheck %s
+
+true ? 1 : 0;
+// CHECK: true ? 1 : 0;
+
+
+true ? false ? 1 : 2 : 3;
+// CHECK: true ? false ? 1 : 2 : 3;
