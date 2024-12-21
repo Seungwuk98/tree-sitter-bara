@@ -110,15 +110,18 @@ for (var i = 0;; {
           (identifier))))
     (comment
       (litSupport))
-    (comment)
-    (comment)
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
     (comment
       (litSupport))
     (comment)
     (comment)
     (comment)
     (forStatement)
-    (comment)
+    (comment
+      (litSupport))
     (comment)
     (comment)
     (comment)
@@ -140,11 +143,16 @@ for (var i = 0;; {
             (integer)))
         (breakStatement)
         (continueStatement)))
-    (comment)
-    (comment)
-    (comment)
-    (comment)
-    (comment)
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
     (comment)
     (comment)
     (comment)
@@ -154,20 +162,25 @@ for (var i = 0;; {
           (identifier)))
       (integerLiteral
         (integer))
-      (compoundStatement
-        (operatorAssignmentStatement
-          (identifierExpression
-            (identifier))
-          (integerLiteral
-            (integer)))
-        (operatorAssignmentStatement
-          (identifierExpression
-            (identifier))
-          (integerLiteral
-            (integer))))))
-  (comment)
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+      (operatorAssignmentStatement
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
+      (operatorAssignmentStatement
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport)))
+
 

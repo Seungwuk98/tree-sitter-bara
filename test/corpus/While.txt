@@ -94,9 +94,12 @@ do {
       (litSupport))
     (comment
       (litSupport))
-    (comment)
-    (comment)
-    (comment)
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
+    (comment
+      (litSupport))
     (comment
       (litSupport))
     (comment)
@@ -127,8 +130,12 @@ do {
           (integer)))))
   (comment
     (litSupport))
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport)))
 

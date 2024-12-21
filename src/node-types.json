@@ -1406,10 +1406,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "arrayExpression",
+          "named": true
+        },
+        {
+          "type": "assignmentStatement",
           "named": true
         },
         {
@@ -1418,6 +1422,10 @@
         },
         {
           "type": "booleanLiteral",
+          "named": true
+        },
+        {
+          "type": "breakStatement",
           "named": true
         },
         {
@@ -1433,7 +1441,31 @@
           "named": true
         },
         {
+          "type": "continueStatement",
+          "named": true
+        },
+        {
+          "type": "declarationStatement",
+          "named": true
+        },
+        {
+          "type": "doWhileStatement",
+          "named": true
+        },
+        {
+          "type": "expressionStatement",
+          "named": true
+        },
+        {
           "type": "floatLiteral",
+          "named": true
+        },
+        {
+          "type": "forStatement",
+          "named": true
+        },
+        {
+          "type": "functionDeclaration",
           "named": true
         },
         {
@@ -1442,6 +1474,10 @@
         },
         {
           "type": "identifierExpression",
+          "named": true
+        },
+        {
+          "type": "ifStatement",
           "named": true
         },
         {
@@ -1465,7 +1501,15 @@
           "named": true
         },
         {
+          "type": "operatorAssignmentStatement",
+          "named": true
+        },
+        {
           "type": "parameters",
+          "named": true
+        },
+        {
+          "type": "returnStatement",
           "named": true
         },
         {
@@ -1478,6 +1522,10 @@
         },
         {
           "type": "unaryExpression",
+          "named": true
+        },
+        {
+          "type": "whileStatement",
           "named": true
         }
       ]

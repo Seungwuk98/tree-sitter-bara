@@ -55,24 +55,22 @@ print(outOfLambda);
           (identifier)))
       (callExpression
         (lambdaExpression
-          (compoundStatement
-            (declarationStatement
-              (pattern
-                (identifierPattern
-                  (identifier)))
-              (integerLiteral
-                (integer)))
-            (returnStatement
-              (lambdaExpression
-                (compoundStatement
-                  (operatorAssignmentStatement
-                    (identifierExpression
-                      (identifier))
-                    (integerLiteral
-                      (integer)))
-                  (returnStatement
-                    (identifierExpression
-                      (identifier))))))))))
+          (declarationStatement
+            (pattern
+              (identifierPattern
+                (identifier)))
+            (integerLiteral
+              (integer)))
+          (returnStatement
+            (lambdaExpression
+              (operatorAssignmentStatement
+                (identifierExpression
+                  (identifier))
+                (integerLiteral
+                  (integer)))
+              (returnStatement
+                (identifierExpression
+                  (identifier))))))))
     (expressionStatement
       (callExpression
         (identifierExpression
@@ -111,15 +109,14 @@ print(outOfLambda);
         (identifierPattern
           (identifier)))
       (lambdaExpression
-        (compoundStatement
-          (operatorAssignmentStatement
-            (identifierExpression
-              (identifier))
-            (integerLiteral
-              (integer)))
-          (returnStatement
-            (identifierExpression
-              (identifier))))))
+        (operatorAssignmentStatement
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (returnStatement
+          (identifierExpression
+            (identifier)))))
     (expressionStatement
       (callExpression
         (identifierExpression

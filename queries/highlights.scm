@@ -9,6 +9,7 @@
   "continue"
   "match"
   "return"
+  "do"
 ] @keyword
 
 (integer) @number

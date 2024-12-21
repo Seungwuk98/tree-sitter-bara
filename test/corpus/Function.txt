@@ -31,7 +31,8 @@ fn function(a, b, c) {
         (identifier)
         (identifier)
         (identifier))
-      (comment)
+      (comment
+        (litSupport))
       (returnStatement
         (tupleExpression
           (identifierExpression
@@ -40,4 +41,5 @@ fn function(a, b, c) {
             (identifier))
           (identifierExpression
             (identifier))))
-      (comment))))
+      (comment
+        (litSupport)))))

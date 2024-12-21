@@ -1,0 +1,89 @@
+==================
+If
+==================
+
+// RUN: bara %s -ast-print | FileCheck %s
+
+
+//===----------------------------------------------------------------------===//
+/// If 
+//===----------------------------------------------------------------------===//
+
+var a = random();
+// CHECK: var a = random();
+
+if a > 0 {
+  print("a is positive");
+} else if a < 0 {
+  print("a is negative");
+} else {
+  print("a is zero");
+}
+// CHECK-LABEL: if a > 0
+// CHECK-NEXT:   print("a is positive");
+// CHECK-NEXT: else if a < 0
+// CHECK-NEXT:   print("a is negative");
+// CHECK-NEXT: else
+// CHECK-NEXT:   print("a is zero");
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (comment)
+  (comment)
+  (comment)
+  (program
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))))
+    (comment
+      (litSupport))
+    (ifStatement
+      (binaryExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
+      (expressionStatement
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (stringLiteral
+            (string))))
+      (ifStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
+        (expressionStatement
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string))))
+        (expressionStatement
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string)))))))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport))
+  (comment
+    (litSupport)))
+

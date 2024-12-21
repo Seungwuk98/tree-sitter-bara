@@ -168,27 +168,25 @@ print(getData(ll, 1));
           (lambdaExpression
             (parameters
               (identifier))
-            (compoundStatement
-              (assignmentStatement
-                (indexExpression
-                  (identifierExpression
-                    (identifier))
-                  (integerLiteral
-                    (integer)))
+            (assignmentStatement
+              (indexExpression
                 (identifierExpression
-                  (identifier)))))
+                  (identifier))
+                (integerLiteral
+                  (integer)))
+              (identifierExpression
+                (identifier))))
           (lambdaExpression
             (parameters
               (identifier))
-            (compoundStatement
-              (assignmentStatement
-                (indexExpression
-                  (identifierExpression
-                    (identifier))
-                  (integerLiteral
-                    (integer)))
+            (assignmentStatement
+              (indexExpression
                 (identifierExpression
-                  (identifier))))))))
+                  (identifier))
+                (integerLiteral
+                  (integer)))
+              (identifierExpression
+                (identifier)))))))
     (functionDeclaration
       (identifier)
       (parameters
@@ -257,15 +255,14 @@ print(getData(ll, 1));
           (lambdaExpression
             (parameters
               (identifier))
-            (compoundStatement
-              (operatorAssignmentStatement
-                (indexExpression
-                  (identifierExpression
-                    (identifier))
-                  (integerLiteral
-                    (integer)))
+            (operatorAssignmentStatement
+              (indexExpression
                 (identifierExpression
-                  (identifier)))))
+                  (identifier))
+                (integerLiteral
+                  (integer)))
+              (identifierExpression
+                (identifier))))
           (lambdaExpression
             (indexExpression
               (identifierExpression
@@ -684,4 +681,3 @@ print(getData(ll, 1));
             (integer))))))
   (comment
     (litSupport)))
-

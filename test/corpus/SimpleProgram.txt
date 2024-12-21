@@ -28,4 +28,5 @@ fn main() {
             (integer))))))
   (comment
     (litSupport))
-  (comment))
+  (comment
+    (litSupport)))

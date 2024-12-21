@@ -37,28 +37,33 @@ module.exports = grammar({
     ),
 
 
-    compoundStatement: $ => seq("{", repeat($._statement), "}"),
+    _compoundStatement: $ => seq("{", repeat($._statement), "}"),
+
+    compoundStatement: $ => $._compoundStatement,
 
     expressionStatement: $ => seq($._expression, ";"),
 
     ifStatement: $ => seq(
       "if",
       $._expression,
-      '{', repeat($._statement), '}',
+      $._compoundStatement,
       optional(seq(
-        "else", '{', repeat($._statement), '}'
+        "else", choice(
+          $._compoundStatement,
+          $.ifStatement
+        )
       )),
     ),
 
     whileStatement: $ => seq(
       "while",
       $._expression,
-      '{', repeat($._statement), '}',
+      $._compoundStatement,
     ),
 
     doWhileStatement: $ => seq(
       "do",
-      '{', repeat($._statement), '}',
+      $._compoundStatement,
       "while",
       $._expression,
       ";",
@@ -72,10 +77,10 @@ module.exports = grammar({
       optional(choice(
         $._assignment,
         $._operatorAssignment,
-        $.compoundStatement,
+        $._compoundStatement,
       )),
       ")",
-      '{', repeat($._statement), '}',
+      $._compoundStatement,
     ),
 
     breakStatement: _ => seq("break", ";"),
@@ -151,7 +156,7 @@ module.exports = grammar({
     ),
 
     lambdaExpression: $ => prec(-1, seq(
-      '\\', optional($.parameters), '=>', choice($._expression, $.compoundStatement),
+      '\\', optional($.parameters), '=>', choice($._expression, $._compoundStatement),
     )),
 
     binaryExpression: $ => choice(
@@ -253,7 +258,7 @@ module.exports = grammar({
       $._comment,
     ),
 
-    litSupport: _ => token(prec(2, seq(/[A-Z]+/, ':'))),
+    litSupport: _ => token(prec(2, /[a-zA-Z][a-zA-Z0-9_-]+:/)),
 
     _comment: _ => token(prec(1, /.*/)),
 
