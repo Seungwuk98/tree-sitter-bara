@@ -1,9 +1,9 @@
 // RUN: bara %s -interpret | FileCheck %s
 
 var a = match 1 {
-  \1 => "one";
-  \2 => "two";
-  \3 => "three";
+  1 => "one";
+  2 => "two";
+  3 => "three";
 };
 
 print(a);
@@ -11,43 +11,43 @@ print(a);
 
 
 var b = match "x" {
-  \"x" => 1;
-  \"y" => 2;
-  \_ => 3;
+  "x" => 1;
+  "y" => 2;
+  _ => 3;
 };
 
 print(b);
 // CHECK: 1
 
 var c = match (1, 2) {
-  \(0, 3) => 1;
-  \(1, 4) => 1;
-  \(x, y) => x + y;
+  (0, 3) => 1;
+  (1, 4) => 1;
+  (x, y) => x + y;
 };
 
 print(c);
 // CHECK: 3
 
 var d = match ((1, 2), 3) {
-  \((a, b), c) => a + b + c;
-  \_ => 1;
+  ((a, b), c) => a + b + c;
+  _ => 1;
 };
 
 print(d); 
 // CHECK: 6
 
 var e = match (1,) {
-  \1 => "one";
-  \(a, b) => "two";
-  \_ => "three";
+  1 => "one";
+  (a, b) => "two";
+  _ => "three";
 };
 
 print(e);
 // CHECK: three
 
 var f = match false {
-  \true => "true";
-  \false => "false";
+  true => "true";
+  false => "false";
 };
 
 print(f);
