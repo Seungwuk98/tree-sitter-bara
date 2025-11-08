@@ -11,6 +11,7 @@
   "return"
   "do"
   "struct"
+  "ref"
 ] @keyword
 
 (integer) @number
