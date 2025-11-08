@@ -56,6 +56,7 @@ print(fibonacci);
 
 ---
 
+
 (source_file
   (comment
     (litSupport))
@@ -94,31 +95,33 @@ print(fibonacci);
             (identifier))
           (integerLiteral
             (integer)))
-        (assignmentStatement
-          (identifierExpression
-            (identifier))
-          (identifierExpression
-            (identifier)))
-        (assignmentStatement
-          (identifierExpression
-            (identifier))
+        (expressionStatement
           (binaryExpression
-            (callExpression
-              (identifierExpression
-                (identifier))
-              (binaryExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))
+        (expressionStatement
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (binaryExpression
+              (callExpression
                 (identifierExpression
                   (identifier))
-                (integerLiteral
-                  (integer))))
-            (callExpression
-              (identifierExpression
-                (identifier))
-              (binaryExpression
+                (binaryExpression
+                  (identifierExpression
+                    (identifier))
+                  (integerLiteral
+                    (integer))))
+              (callExpression
                 (identifierExpression
                   (identifier))
-                (integerLiteral
-                  (integer)))))))
+                (binaryExpression
+                  (identifierExpression
+                    (identifier))
+                  (integerLiteral
+                    (integer))))))))
       (expressionStatement
         (callExpression
           (identifierExpression
@@ -248,5 +251,3 @@ print(fibonacci);
           (identifier)))))
   (comment
     (litSupport)))
-
-

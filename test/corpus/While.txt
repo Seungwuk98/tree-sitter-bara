@@ -74,16 +74,18 @@ do {
           (identifier))
         (integerLiteral
           (integer)))
-      (operatorAssignmentStatement
-        (identifierExpression
-          (identifier))
-        (identifierExpression
-          (identifier)))
-      (operatorAssignmentStatement
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer))))
+      (expressionStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier))))
+      (expressionStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))))
     (expressionStatement
       (callExpression
         (identifierExpression
@@ -118,11 +120,12 @@ do {
             (identifier))
           (identifierExpression
             (identifier))))
-      (operatorAssignmentStatement
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer)))
+      (expressionStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer))))
       (binaryExpression
         (identifierExpression
           (identifier))

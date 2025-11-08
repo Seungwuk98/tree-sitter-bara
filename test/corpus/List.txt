@@ -90,10 +90,11 @@ print(pushList(pushList([], 1), 2));
           (identifier))
         (integerLiteral
           (integer)))
-      (identifierExpression
-        (identifier))
-      (integerLiteral
-        (integer))
+      (binaryExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
       (expressionStatement
         (callExpression
           (identifierExpression

@@ -20,8 +20,21 @@ module.exports = grammar({
 
     program: $ => repeat1($._statement),
 
+    typeDeclaration: $ => seq(
+      'struct',
+      field("name", $.identifier),
+      '(',
+      optional($._typeParameter),
+      ')',
+      ';'
+    ),
+
+    _typeParameter: $ => seq(
+      field('field', $.identifier),
+      repeat(seq(',', field('field', $.identifier))),
+    ),
+
     _statement: $ => choice(
-      $.compoundStatement,
       $.expressionStatement,
       $.ifStatement,
       $.whileStatement,
@@ -31,15 +44,11 @@ module.exports = grammar({
       $.continueStatement,
       $.returnStatement,
       $.declarationStatement,
-      $.assignmentStatement,
-      $.operatorAssignmentStatement,
       $.functionDeclaration,
     ),
 
 
     _compoundStatement: $ => seq("{", repeat($._statement), "}"),
-
-    compoundStatement: $ => $._compoundStatement,
 
     expressionStatement: $ => seq($._expression, ";"),
 
@@ -74,11 +83,7 @@ module.exports = grammar({
       "(",
       optional($._declaration), ';',
       optional($._expression), ';',
-      optional(choice(
-        $._assignment,
-        $._operatorAssignment,
-        $._compoundStatement,
-      )),
+      optional($._expression),
       ")",
       $._compoundStatement,
     ),
@@ -97,25 +102,8 @@ module.exports = grammar({
       $._expression, '=', $._expression,
     ),
 
-    _operatorAssignment: $ => seq(
-      $._expression, $._assignOperator, $._expression,
-    ),
-
-    _assignOperator: _ => choice(
-      "+=", "-=", "*=", "/=", "%=",
-      "&=", "|=", "^=", "<<=", ">>="
-    ),
-
     declarationStatement: $ => seq(
       $._declaration, ";",
-    ),
-
-    assignmentStatement: $ => seq(
-      $._assignment, ";",
-    ),
-
-    operatorAssignmentStatement: $ => seq(
-      $._operatorAssignment, ";",
     ),
 
     functionDeclaration: $ => seq(
@@ -145,6 +133,8 @@ module.exports = grammar({
       $.floatLiteral,
       $.stringLiteral,
       $.nilLiteral,
+      $.compoundExpression,
+      $.structAccessExpression,
     ),
 
     matchExpression: $ => seq(
@@ -152,11 +142,11 @@ module.exports = grammar({
     ),
 
     matchCase: $ => seq(
-      '\\', $.pattern, '=>', $._expression, ';'
+      $.pattern, '=>', $._expression, ';'
     ),
 
     lambdaExpression: $ => prec(-1, seq(
-      '\\', optional($.parameters), '=>', choice($._expression, $._compoundStatement),
+      '\\', optional($.parameters), '=>', $._expression,
     )),
 
     binaryExpression: $ => choice(
@@ -164,24 +154,36 @@ module.exports = grammar({
       //{BitShl, 5}, {BitShr, 5},  {Lt, 6},     {Le, 6},     {Gt, 6},
       //{Ge, 6},     {Eq, 7},      {Ne, 7},     {BitAnd, 8}, {BitXor, 9},
       //{BitOr, 10}, {LogAnd, 11}, {LogOr, 12},
-      prec.left(1, seq($._expression, "||", $._expression)),
-      prec.left(2, seq($._expression, "&&", $._expression)),
-      prec.left(3, seq($._expression, "|", $._expression)),
-      prec.left(4, seq($._expression, "^", $._expression)),
-      prec.left(5, seq($._expression, "&", $._expression)),
-      prec.left(6, seq($._expression, "==", $._expression)),
-      prec.left(6, seq($._expression, "!=", $._expression)),
-      prec.left(7, seq($._expression, "<", $._expression)),
-      prec.left(7, seq($._expression, "<=", $._expression)),
-      prec.left(7, seq($._expression, ">", $._expression)),
-      prec.left(7, seq($._expression, ">=", $._expression)),
-      prec.left(8, seq($._expression, "<<", $._expression)),
-      prec.left(8, seq($._expression, ">>", $._expression)),
-      prec.left(9, seq($._expression, "+", $._expression)),
-      prec.left(9, seq($._expression, "-", $._expression)),
-      prec.left(10, seq($._expression, "*", $._expression)),
-      prec.left(10, seq($._expression, "/", $._expression)),
-      prec.left(10, seq($._expression, "%", $._expression)),
+      prec.left(1, seq($._expression, "=", $._expression)),
+      prec.left(1, seq($._expression, '+=', $._expression)),
+      prec.left(1, seq($._expression, '-=', $._expression)),
+      prec.left(1, seq($._expression, '*=', $._expression)),
+      prec.left(1, seq($._expression, '/=', $._expression)),
+      prec.left(1, seq($._expression, '%=', $._expression)),
+      prec.left(1, seq($._expression, '&=', $._expression)),
+      prec.left(1, seq($._expression, '|=', $._expression)),
+      prec.left(1, seq($._expression, '^=', $._expression)),
+      prec.left(1, seq($._expression, '<<=', $._expression)),
+      prec.left(1, seq($._expression, '>>=', $._expression)),
+
+      prec.left(2, seq($._expression, "||", $._expression)),
+      prec.left(3, seq($._expression, "&&", $._expression)),
+      prec.left(4, seq($._expression, "|", $._expression)),
+      prec.left(5, seq($._expression, "^", $._expression)),
+      prec.left(6, seq($._expression, "&", $._expression)),
+      prec.left(7, seq($._expression, "==", $._expression)),
+      prec.left(7, seq($._expression, "!=", $._expression)),
+      prec.left(8, seq($._expression, "<", $._expression)),
+      prec.left(8, seq($._expression, "<=", $._expression)),
+      prec.left(8, seq($._expression, ">", $._expression)),
+      prec.left(8, seq($._expression, ">=", $._expression)),
+      prec.left(9, seq($._expression, "<<", $._expression)),
+      prec.left(9, seq($._expression, ">>", $._expression)),
+      prec.left(10, seq($._expression, "+", $._expression)),
+      prec.left(10, seq($._expression, "-", $._expression)),
+      prec.left(11, seq($._expression, "*", $._expression)),
+      prec.left(11, seq($._expression, "/", $._expression)),
+      prec.left(11, seq($._expression, "%", $._expression)),
     ),
 
     unaryExpression: $ => choice(
@@ -191,11 +193,11 @@ module.exports = grammar({
       prec.left(10, seq("+", $._expression)),
     ),
 
-    conditionalExpression: $ => prec.right(0, seq(
+    conditionalExpression: $ => prec.right(1, seq(
       $._expression, '?', $._expression, ':', $._expression,
     )),
 
-    callExpression: $ => prec.left(11, seq(
+    callExpression: $ => prec.left(12, seq(
       field("callee", $._expression),
       '(', optional($._arguments), ')',
     )),
@@ -226,6 +228,17 @@ module.exports = grammar({
     )),
 
     groupExpression: $ => seq('(', $._expression, ')'),
+
+    compoundExpression: $ => seq(
+      '{',
+      repeat($._statement),
+      optional($._expression),
+      '}'
+    ),
+
+    structAccessExpression: $ => prec.left(12, seq(
+      $._expression, '.', $.identifier
+    )),
 
     integerLiteral: $ => $.integer,
 
@@ -286,6 +299,20 @@ module.exports = grammar({
       seq('(', $.pattern, ',', ')'),
       seq('(', $.pattern, repeat1(seq(',', $.pattern)), optional(','), ')'),
       seq('(', optional(','), ')')
+    ),
+
+    structPattern: $ => seq(
+      $.identifier,
+      '(',
+      repeat($._structPatternField),
+      ')'
+    ),
+
+    _structPatternField: $ => seq(
+      field("name", $.identifier),
+      optional(seq(
+        ':', $.pattern,
+      ))
     ),
 
     nilPattern: _ => "nil",

@@ -45,6 +45,7 @@ print(outOfLambda);
 
 ---
 
+
 (source_file
   (comment
     (litSupport))
@@ -53,24 +54,27 @@ print(outOfLambda);
       (pattern
         (identifierPattern
           (identifier)))
-      (callExpression
-        (lambdaExpression
-          (declarationStatement
-            (pattern
-              (identifierPattern
-                (identifier)))
-            (integerLiteral
-              (integer)))
-          (returnStatement
-            (lambdaExpression
-              (operatorAssignmentStatement
-                (identifierExpression
-                  (identifier))
-                (integerLiteral
-                  (integer)))
-              (returnStatement
-                (identifierExpression
-                  (identifier))))))))
+      (lambdaExpression
+        (callExpression
+          (compoundExpression
+            (declarationStatement
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (integerLiteral
+                (integer)))
+            (returnStatement
+              (lambdaExpression
+                (compoundExpression
+                  (expressionStatement
+                    (binaryExpression
+                      (identifierExpression
+                        (identifier))
+                      (integerLiteral
+                        (integer))))
+                  (returnStatement
+                    (identifierExpression
+                      (identifier))))))))))
     (expressionStatement
       (callExpression
         (identifierExpression
@@ -109,14 +113,16 @@ print(outOfLambda);
         (identifierPattern
           (identifier)))
       (lambdaExpression
-        (operatorAssignmentStatement
-          (identifierExpression
-            (identifier))
-          (integerLiteral
-            (integer)))
-        (returnStatement
-          (identifierExpression
-            (identifier)))))
+        (compoundExpression
+          (expressionStatement
+            (binaryExpression
+              (identifierExpression
+                (identifier))
+              (integerLiteral
+                (integer))))
+          (returnStatement
+            (identifierExpression
+              (identifier))))))
     (expressionStatement
       (callExpression
         (identifierExpression

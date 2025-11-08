@@ -24,78 +24,7 @@
           "named": true
         },
         {
-          "type": "conditionalExpression",
-          "named": true
-        },
-        {
-          "type": "floatLiteral",
-          "named": true
-        },
-        {
-          "type": "groupExpression",
-          "named": true
-        },
-        {
-          "type": "identifierExpression",
-          "named": true
-        },
-        {
-          "type": "indexExpression",
-          "named": true
-        },
-        {
-          "type": "integerLiteral",
-          "named": true
-        },
-        {
-          "type": "lambdaExpression",
-          "named": true
-        },
-        {
-          "type": "matchExpression",
-          "named": true
-        },
-        {
-          "type": "nilLiteral",
-          "named": true
-        },
-        {
-          "type": "stringLiteral",
-          "named": true
-        },
-        {
-          "type": "tupleExpression",
-          "named": true
-        },
-        {
-          "type": "unaryExpression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "assignmentStatement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "arrayExpression",
-          "named": true
-        },
-        {
-          "type": "binaryExpression",
-          "named": true
-        },
-        {
-          "type": "booleanLiteral",
-          "named": true
-        },
-        {
-          "type": "callExpression",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -136,6 +65,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -174,6 +107,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -211,6 +148,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -264,6 +205,10 @@
             "named": true
           },
           {
+            "type": "compoundExpression",
+            "named": true
+          },
+          {
             "type": "conditionalExpression",
             "named": true
           },
@@ -304,6 +249,10 @@
             "named": true
           },
           {
+            "type": "structAccessExpression",
+            "named": true
+          },
+          {
             "type": "tupleExpression",
             "named": true
           },
@@ -332,6 +281,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -375,6 +328,10 @@
           "named": true
         },
         {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
           "type": "tupleExpression",
           "named": true
         },
@@ -401,7 +358,7 @@
     }
   },
   {
-    "type": "compoundStatement",
+    "type": "compoundExpression",
     "named": true,
     "fields": {},
     "children": {
@@ -409,7 +366,15 @@
       "required": false,
       "types": [
         {
-          "type": "assignmentStatement",
+          "type": "arrayExpression",
+          "named": true
+        },
+        {
+          "type": "binaryExpression",
+          "named": true
+        },
+        {
+          "type": "booleanLiteral",
           "named": true
         },
         {
@@ -417,7 +382,15 @@
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
           "named": true
         },
         {
@@ -437,6 +410,10 @@
           "named": true
         },
         {
+          "type": "floatLiteral",
+          "named": true
+        },
+        {
           "type": "forStatement",
           "named": true
         },
@@ -445,15 +422,55 @@
           "named": true
         },
         {
+          "type": "groupExpression",
+          "named": true
+        },
+        {
+          "type": "identifierExpression",
+          "named": true
+        },
+        {
           "type": "ifStatement",
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
+          "type": "indexExpression",
+          "named": true
+        },
+        {
+          "type": "integerLiteral",
+          "named": true
+        },
+        {
+          "type": "lambdaExpression",
+          "named": true
+        },
+        {
+          "type": "matchExpression",
+          "named": true
+        },
+        {
+          "type": "nilLiteral",
           "named": true
         },
         {
           "type": "returnStatement",
+          "named": true
+        },
+        {
+          "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
+          "type": "tupleExpression",
+          "named": true
+        },
+        {
+          "type": "unaryExpression",
           "named": true
         },
         {
@@ -488,6 +505,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -525,6 +546,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -565,6 +590,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -612,6 +641,10 @@
           "named": true
         },
         {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
           "type": "tupleExpression",
           "named": true
         },
@@ -635,10 +668,6 @@
           "named": true
         },
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "binaryExpression",
           "named": true
         },
@@ -655,7 +684,7 @@
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -723,15 +752,15 @@
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
-          "named": true
-        },
-        {
           "type": "returnStatement",
           "named": true
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -774,6 +803,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -811,6 +844,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -867,10 +904,6 @@
           "named": true
         },
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "binaryExpression",
           "named": true
         },
@@ -887,7 +920,7 @@
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -955,10 +988,6 @@
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
-          "named": true
-        },
-        {
           "type": "pattern",
           "named": true
         },
@@ -968,6 +997,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -1005,15 +1038,7 @@
       "required": false,
       "types": [
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "breakStatement",
-          "named": true
-        },
-        {
-          "type": "compoundStatement",
           "named": true
         },
         {
@@ -1042,10 +1067,6 @@
         },
         {
           "type": "ifStatement",
-          "named": true
-        },
-        {
-          "type": "operatorAssignmentStatement",
           "named": true
         },
         {
@@ -1088,6 +1109,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -1125,6 +1150,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -1181,10 +1210,6 @@
           "named": true
         },
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "binaryExpression",
           "named": true
         },
@@ -1201,7 +1226,7 @@
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -1269,15 +1294,15 @@
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
-          "named": true
-        },
-        {
           "type": "returnStatement",
           "named": true
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -1320,6 +1345,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -1357,6 +1386,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -1406,14 +1439,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "arrayExpression",
-          "named": true
-        },
-        {
-          "type": "assignmentStatement",
           "named": true
         },
         {
@@ -1425,15 +1454,11 @@
           "named": true
         },
         {
-          "type": "breakStatement",
-          "named": true
-        },
-        {
           "type": "callExpression",
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -1441,31 +1466,7 @@
           "named": true
         },
         {
-          "type": "continueStatement",
-          "named": true
-        },
-        {
-          "type": "declarationStatement",
-          "named": true
-        },
-        {
-          "type": "doWhileStatement",
-          "named": true
-        },
-        {
-          "type": "expressionStatement",
-          "named": true
-        },
-        {
           "type": "floatLiteral",
-          "named": true
-        },
-        {
-          "type": "forStatement",
-          "named": true
-        },
-        {
-          "type": "functionDeclaration",
           "named": true
         },
         {
@@ -1474,10 +1475,6 @@
         },
         {
           "type": "identifierExpression",
-          "named": true
-        },
-        {
-          "type": "ifStatement",
           "named": true
         },
         {
@@ -1501,19 +1498,15 @@
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
-          "named": true
-        },
-        {
           "type": "parameters",
           "named": true
         },
         {
-          "type": "returnStatement",
+          "type": "stringLiteral",
           "named": true
         },
         {
-          "type": "stringLiteral",
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -1522,10 +1515,6 @@
         },
         {
           "type": "unaryExpression",
-          "named": true
-        },
-        {
-          "type": "whileStatement",
           "named": true
         }
       ]
@@ -1553,6 +1542,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -1600,6 +1593,10 @@
           "named": true
         },
         {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
           "type": "tupleExpression",
           "named": true
         },
@@ -1632,6 +1629,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -1679,6 +1680,10 @@
           "named": true
         },
         {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
           "type": "tupleExpression",
           "named": true
         },
@@ -1698,81 +1703,6 @@
     "type": "nilPattern",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "operatorAssignmentStatement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "arrayExpression",
-          "named": true
-        },
-        {
-          "type": "binaryExpression",
-          "named": true
-        },
-        {
-          "type": "booleanLiteral",
-          "named": true
-        },
-        {
-          "type": "callExpression",
-          "named": true
-        },
-        {
-          "type": "conditionalExpression",
-          "named": true
-        },
-        {
-          "type": "floatLiteral",
-          "named": true
-        },
-        {
-          "type": "groupExpression",
-          "named": true
-        },
-        {
-          "type": "identifierExpression",
-          "named": true
-        },
-        {
-          "type": "indexExpression",
-          "named": true
-        },
-        {
-          "type": "integerLiteral",
-          "named": true
-        },
-        {
-          "type": "lambdaExpression",
-          "named": true
-        },
-        {
-          "type": "matchExpression",
-          "named": true
-        },
-        {
-          "type": "nilLiteral",
-          "named": true
-        },
-        {
-          "type": "stringLiteral",
-          "named": true
-        },
-        {
-          "type": "tupleExpression",
-          "named": true
-        },
-        {
-          "type": "unaryExpression",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "parameters",
@@ -1837,15 +1767,7 @@
       "required": true,
       "types": [
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "breakStatement",
-          "named": true
-        },
-        {
-          "type": "compoundStatement",
           "named": true
         },
         {
@@ -1874,10 +1796,6 @@
         },
         {
           "type": "ifStatement",
-          "named": true
-        },
-        {
-          "type": "operatorAssignmentStatement",
           "named": true
         },
         {
@@ -1913,6 +1831,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -1953,6 +1875,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -2013,6 +1939,93 @@
     }
   },
   {
+    "type": "structAccessExpression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrayExpression",
+          "named": true
+        },
+        {
+          "type": "binaryExpression",
+          "named": true
+        },
+        {
+          "type": "booleanLiteral",
+          "named": true
+        },
+        {
+          "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
+          "type": "conditionalExpression",
+          "named": true
+        },
+        {
+          "type": "floatLiteral",
+          "named": true
+        },
+        {
+          "type": "groupExpression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "identifierExpression",
+          "named": true
+        },
+        {
+          "type": "indexExpression",
+          "named": true
+        },
+        {
+          "type": "integerLiteral",
+          "named": true
+        },
+        {
+          "type": "lambdaExpression",
+          "named": true
+        },
+        {
+          "type": "matchExpression",
+          "named": true
+        },
+        {
+          "type": "nilLiteral",
+          "named": true
+        },
+        {
+          "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
+          "type": "tupleExpression",
+          "named": true
+        },
+        {
+          "type": "unaryExpression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "tupleExpression",
     "named": true,
     "fields": {},
@@ -2034,6 +2047,10 @@
         },
         {
           "type": "callExpression",
+          "named": true
+        },
+        {
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -2074,6 +2091,10 @@
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -2127,6 +2148,10 @@
           "named": true
         },
         {
+          "type": "compoundExpression",
+          "named": true
+        },
+        {
           "type": "conditionalExpression",
           "named": true
         },
@@ -2167,6 +2192,10 @@
           "named": true
         },
         {
+          "type": "structAccessExpression",
+          "named": true
+        },
+        {
           "type": "tupleExpression",
           "named": true
         },
@@ -2190,10 +2219,6 @@
           "named": true
         },
         {
-          "type": "assignmentStatement",
-          "named": true
-        },
-        {
           "type": "binaryExpression",
           "named": true
         },
@@ -2210,7 +2235,7 @@
           "named": true
         },
         {
-          "type": "compoundStatement",
+          "type": "compoundExpression",
           "named": true
         },
         {
@@ -2278,15 +2303,15 @@
           "named": true
         },
         {
-          "type": "operatorAssignmentStatement",
-          "named": true
-        },
-        {
           "type": "returnStatement",
           "named": true
         },
         {
           "type": "stringLiteral",
+          "named": true
+        },
+        {
+          "type": "structAccessExpression",
           "named": true
         },
         {
@@ -2366,6 +2391,10 @@
   },
   {
     "type": "-=",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {

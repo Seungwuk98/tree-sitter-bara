@@ -103,13 +103,14 @@ print(dfsOrder);
           (identifierExpression
             (identifier)))
         (returnStatement))
-      (assignmentStatement
-        (indexExpression
-          (identifierExpression
-            (identifier))
-          (identifierExpression
-            (identifier)))
-        (booleanLiteral))
+      (expressionStatement
+        (binaryExpression
+          (indexExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier)))
+          (booleanLiteral)))
       (expressionStatement
         (callExpression
           (identifierExpression
@@ -135,10 +136,11 @@ print(dfsOrder);
                 (identifier))
               (identifierExpression
                 (identifier)))))
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer))
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))
         (expressionStatement
           (callExpression
             (identifierExpression

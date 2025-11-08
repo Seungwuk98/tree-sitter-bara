@@ -134,7 +134,6 @@ print(getData(ll, 1));
 
 
 ---
-
 (source_file
   (comment
     (litSupport))
@@ -168,25 +167,29 @@ print(getData(ll, 1));
           (lambdaExpression
             (parameters
               (identifier))
-            (assignmentStatement
-              (indexExpression
-                (identifierExpression
-                  (identifier))
-                (integerLiteral
-                  (integer)))
-              (identifierExpression
-                (identifier))))
+            (compoundExpression
+              (expressionStatement
+                (binaryExpression
+                  (indexExpression
+                    (identifierExpression
+                      (identifier))
+                    (integerLiteral
+                      (integer)))
+                  (identifierExpression
+                    (identifier))))))
           (lambdaExpression
             (parameters
               (identifier))
-            (assignmentStatement
-              (indexExpression
-                (identifierExpression
-                  (identifier))
-                (integerLiteral
-                  (integer)))
-              (identifierExpression
-                (identifier)))))))
+            (compoundExpression
+              (expressionStatement
+                (binaryExpression
+                  (indexExpression
+                    (identifierExpression
+                      (identifier))
+                    (integerLiteral
+                      (integer)))
+                  (identifierExpression
+                    (identifier)))))))))
     (functionDeclaration
       (identifier)
       (parameters
@@ -255,14 +258,16 @@ print(getData(ll, 1));
           (lambdaExpression
             (parameters
               (identifier))
-            (operatorAssignmentStatement
-              (indexExpression
-                (identifierExpression
-                  (identifier))
-                (integerLiteral
-                  (integer)))
-              (identifierExpression
-                (identifier))))
+            (compoundExpression
+              (expressionStatement
+                (binaryExpression
+                  (indexExpression
+                    (identifierExpression
+                      (identifier))
+                    (integerLiteral
+                      (integer)))
+                  (identifierExpression
+                    (identifier))))))
           (lambdaExpression
             (indexExpression
               (identifierExpression
@@ -336,18 +341,20 @@ print(getData(ll, 1));
             (identifier))
           (identifierExpression
             (identifier)))
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer))
-        (assignmentStatement
+        (binaryExpression
           (identifierExpression
             (identifier))
-          (callExpression
+          (integerLiteral
+            (integer)))
+        (expressionStatement
+          (binaryExpression
             (identifierExpression
               (identifier))
-            (identifierExpression
-              (identifier))))
+            (callExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier)))))
         (ifStatement
           (binaryExpression
             (identifierExpression
@@ -387,18 +394,20 @@ print(getData(ll, 1));
             (identifier))
           (identifierExpression
             (identifier)))
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer))
-        (assignmentStatement
+        (binaryExpression
           (identifierExpression
             (identifier))
-          (callExpression
+          (integerLiteral
+            (integer)))
+        (expressionStatement
+          (binaryExpression
             (identifierExpression
               (identifier))
-            (identifierExpression
-              (identifier))))
+            (callExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier)))))
         (ifStatement
           (groupExpression
             (binaryExpression
@@ -443,19 +452,21 @@ print(getData(ll, 1));
           (identifierExpression
             (identifier))
           (nilLiteral))
-        (assignmentStatement
-          (identifierExpression
-            (identifier))
-          (identifierExpression
-            (identifier)))
-        (assignmentStatement
-          (identifierExpression
-            (identifier))
-          (callExpression
+        (expressionStatement
+          (binaryExpression
             (identifierExpression
               (identifier))
             (identifierExpression
-              (identifier)))))
+              (identifier))))
+        (expressionStatement
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (callExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier))))))
       (declarationStatement
         (pattern
           (identifierPattern
@@ -681,3 +692,4 @@ print(getData(ll, 1));
             (integer))))))
   (comment
     (litSupport)))
+

@@ -93,15 +93,17 @@ for (var i = 0;; {
           (identifier))
         (integerLiteral
           (integer)))
-      (identifierExpression
-        (identifier))
-      (integerLiteral
-        (integer))
-      (operatorAssignmentStatement
+      (binaryExpression
         (identifierExpression
           (identifier))
-        (identifierExpression
-          (identifier))))
+        (integerLiteral
+          (integer)))
+      (expressionStatement
+        (binaryExpression
+          (identifierExpression
+            (identifier))
+          (identifierExpression
+            (identifier)))))
     (expressionStatement
       (callExpression
         (identifierExpression
@@ -131,10 +133,11 @@ for (var i = 0;; {
           (identifier)))
       (integerLiteral
         (integer))
-      (identifierExpression
-        (identifier))
-      (integerLiteral
-        (integer))
+      (binaryExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer)))
       (ifStatement
         (binaryExpression
           (identifierExpression
@@ -162,16 +165,19 @@ for (var i = 0;; {
           (identifier)))
       (integerLiteral
         (integer))
-      (operatorAssignmentStatement
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer)))
-      (operatorAssignmentStatement
-        (identifierExpression
-          (identifier))
-        (integerLiteral
-          (integer)))))
+      (compoundExpression
+        (expressionStatement
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer))))
+        (expressionStatement
+          (binaryExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer)))))))
   (comment
     (litSupport))
   (comment
@@ -182,5 +188,3 @@ for (var i = 0;; {
     (litSupport))
   (comment
     (litSupport)))
-
-
