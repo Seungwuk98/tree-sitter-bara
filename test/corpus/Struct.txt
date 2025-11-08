@@ -1,0 +1,327 @@
+==================
+Struct
+==================
+
+// RUN: bara %s -interpret | FileCheck %s
+
+struct Square(side);
+
+print(Square(5));
+// CHECK: <struct 'Square': side=5>
+
+
+print(Square(10).side);
+// CHECK: 10
+
+struct Point(X, Y);
+
+var point = Point(10, 20);
+
+print(point.X);
+// CHECK: 10
+
+print(point.Y);
+// CHECK: 20
+
+
+point.X = 100;
+
+print(point.X);
+// CHECK: 100
+
+
+match point {
+  Point(X, Y) => print(X, Y);
+  _ => print("No match");
+};
+// CHECK: 100 20
+
+match point {
+  Point(X: x, Y: y) => print(x, y);
+  _ => print("No match");
+};
+// CHECK: 100 20
+
+
+match point {
+  Point(ref X, ref Y) => {
+    X = 1;
+    Y = 2;
+    X + Y
+  };
+  _ => print("No match");
+};
+
+print(point.X, point.Y);
+// CHECK: 1 2
+
+
+match point {
+  Point(ref X: x, ref Y: y) => {
+    x = 10;
+    y = 20;
+    x + y
+  };
+  _ => print("No match");
+};
+
+print(point.X, point.Y);
+// CHECK: 10 20
+
+---
+
+(source_file
+  (comment
+    (litSupport))
+  (program
+    (typeDeclaration
+      (identifier)
+      (identifier))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (callExpression
+          (identifierExpression
+            (identifier))
+          (integerLiteral
+            (integer)))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (integerLiteral
+              (integer)))
+          (identifier))))
+    (comment
+      (litSupport))
+    (typeDeclaration
+      (identifier)
+      (identifier)
+      (identifier))
+    (declarationStatement
+      (pattern
+        (identifierPattern
+          (identifier)))
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (integerLiteral
+          (integer))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (binaryExpression
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))
+        (integerLiteral
+          (integer))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (matchExpression
+        (identifierExpression
+          (identifier))
+        (matchCase
+          (pattern
+            (structPattern
+              (identifier)
+              (identifier)
+              (identifier)))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string))))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (matchExpression
+        (identifierExpression
+          (identifier))
+        (matchCase
+          (pattern
+            (structPattern
+              (identifier)
+              (identifier)
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (identifier)
+              (pattern
+                (identifierPattern
+                  (identifier)))))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))
+            (identifierExpression
+              (identifier))))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string))))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (matchExpression
+        (identifierExpression
+          (identifier))
+        (matchCase
+          (pattern
+            (structPattern
+              (identifier)
+              (identifier)
+              (identifier)))
+          (compoundExpression
+            (expressionStatement
+              (binaryExpression
+                (identifierExpression
+                  (identifier))
+                (integerLiteral
+                  (integer))))
+            (expressionStatement
+              (binaryExpression
+                (identifierExpression
+                  (identifier))
+                (integerLiteral
+                  (integer))))
+            (binaryExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier)))))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string))))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))))
+    (comment
+      (litSupport))
+    (expressionStatement
+      (matchExpression
+        (identifierExpression
+          (identifier))
+        (matchCase
+          (pattern
+            (structPattern
+              (identifier)
+              (identifier)
+              (pattern
+                (identifierPattern
+                  (identifier)))
+              (identifier)
+              (pattern
+                (identifierPattern
+                  (identifier)))))
+          (compoundExpression
+            (expressionStatement
+              (binaryExpression
+                (identifierExpression
+                  (identifier))
+                (integerLiteral
+                  (integer))))
+            (expressionStatement
+              (binaryExpression
+                (identifierExpression
+                  (identifier))
+                (integerLiteral
+                  (integer))))
+            (binaryExpression
+              (identifierExpression
+                (identifier))
+              (identifierExpression
+                (identifier)))))
+        (matchCase
+          (pattern
+            (identifierPattern
+              (identifier)))
+          (callExpression
+            (identifierExpression
+              (identifier))
+            (stringLiteral
+              (string))))))
+    (expressionStatement
+      (callExpression
+        (identifierExpression
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier))
+        (structAccessExpression
+          (identifierExpression
+            (identifier))
+          (identifier)))))
+  (comment
+    (litSupport)))
+

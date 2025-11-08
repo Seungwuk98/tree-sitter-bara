@@ -10,6 +10,7 @@
   "match"
   "return"
   "do"
+  "struct"
 ] @keyword
 
 (integer) @number
@@ -55,6 +56,7 @@
   "=>"
   "?"
   ":"
+  "."
 ] @operator
 
 [
@@ -98,8 +100,19 @@
 (callExpression 
   callee: (identifierExpression) @function)
 
+(structAccessExpression
+  field: (identifier) @property)
+
 (functionDeclaration
   name: (identifier) @function)
+
+(typeDeclaration
+  name: (identifier) @type
+  field: (identifier) @variable.parameter)
+
+(structPattern
+  name: (identifier) @type
+  field: (identifier) @variable.parameter)
 
 (parameters
   (identifier) @variable.parameter)

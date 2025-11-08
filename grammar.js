@@ -18,7 +18,7 @@ module.exports = grammar({
   rules: {
     source_file: $ => $.program,
 
-    program: $ => repeat1($._statement),
+    program: $ => repeat1(choice($._statement, $.typeDeclaration)),
 
     typeDeclaration: $ => seq(
       'struct',
@@ -237,7 +237,7 @@ module.exports = grammar({
     ),
 
     structAccessExpression: $ => prec.left(12, seq(
-      $._expression, '.', $.identifier
+      $._expression, '.', field("field", $.identifier)
     )),
 
     integerLiteral: $ => $.integer,
@@ -283,6 +283,7 @@ module.exports = grammar({
       $.booleanPattern,
       $.tuplePattern,
       $.nilPattern,
+      $.structPattern,
     ),
 
     identifierPattern: $ => $.identifier,
@@ -302,14 +303,18 @@ module.exports = grammar({
     ),
 
     structPattern: $ => seq(
-      $.identifier,
+      field("name", $.identifier),
       '(',
-      repeat($._structPatternField),
+      optional(seq(
+        $._structPatternField,
+        repeat(seq(',', $._structPatternField))
+      )),
       ')'
     ),
 
     _structPatternField: $ => seq(
-      field("name", $.identifier),
+      optional('ref'),
+      field("field", $.identifier),
       optional(seq(
         ':', $.pattern,
       ))

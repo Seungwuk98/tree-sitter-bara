@@ -1752,6 +1752,10 @@
           "named": true
         },
         {
+          "type": "structPattern",
+          "named": true
+        },
+        {
           "type": "tuplePattern",
           "named": true
         }
@@ -1800,6 +1804,10 @@
         },
         {
           "type": "returnStatement",
+          "named": true
+        },
+        {
+          "type": "typeDeclaration",
           "named": true
         },
         {
@@ -1941,9 +1949,20 @@
   {
     "type": "structAccessExpression",
     "named": true,
-    "fields": {},
+    "fields": {
+      "field": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -1976,10 +1995,6 @@
         },
         {
           "type": "groupExpression",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
@@ -2020,6 +2035,42 @@
         },
         {
           "type": "unaryExpression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structPattern",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "pattern",
           "named": true
         }
       ]
@@ -2121,6 +2172,32 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "typeDeclaration",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2538,12 +2615,20 @@
     "named": false
   },
   {
+    "type": "ref",
+    "named": false
+  },
+  {
     "type": "return",
     "named": false
   },
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "struct",
+    "named": false
   },
   {
     "type": "true",

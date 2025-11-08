@@ -1,0 +1,65 @@
+// RUN: bara %s -interpret | FileCheck %s
+
+struct Square(side);
+
+print(Square(5));
+// CHECK: <struct 'Square': side=5>
+
+
+print(Square(10).side);
+// CHECK: 10
+
+struct Point(X, Y);
+
+var point = Point(10, 20);
+
+print(point.X);
+// CHECK: 10
+
+print(point.Y);
+// CHECK: 20
+
+
+point.X = 100;
+
+print(point.X);
+// CHECK: 100
+
+
+match point {
+  Point(X, Y) => print(X, Y);
+  _ => print("No match");
+};
+// CHECK: 100 20
+
+match point {
+  Point(X: x, Y: y) => print(x, y);
+  _ => print("No match");
+};
+// CHECK: 100 20
+
+
+match point {
+  Point(ref X, ref Y) => {
+    X = 1;
+    Y = 2;
+    X + Y
+  };
+  _ => print("No match");
+};
+
+print(point.X, point.Y);
+// CHECK: 1 2
+
+
+match point {
+  Point(ref X: x, ref Y: y) => {
+    x = 10;
+    y = 20;
+    x + y
+  };
+  _ => print("No match");
+};
+
+print(point.X, point.Y);
+// CHECK: 10 20
